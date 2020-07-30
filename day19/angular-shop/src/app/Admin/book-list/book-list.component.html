@@ -1,0 +1,23 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Author</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of bookList">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.author}}</td>
+                <td>{{user.subject}}</td>
+                <td>{{user.price}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

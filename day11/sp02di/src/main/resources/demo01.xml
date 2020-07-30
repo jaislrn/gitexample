@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:annotation-config/>
+	
+	<bean id="beanPostProcessor" class="demo01.PostProcessingImpl">
+	</bean>
+	
+	<bean id="p1" class="demo01.PersonImpl">
+		<property name="age" value="37"/>
+		<property name="name" value="Nilesh"/>
+		<property name="email" value="nilesh@sunbeaminfo.com"/>
+	</bean>
+
+	<bean id="p2" class="demo01.PersonImpl">
+		<property name="age" value="42"/>
+		<property name="name" value="Nitin"/>
+		<property name="email" value="nitin@sunbeaminfo.com"/>
+	</bean>
+
+	<bean id="accTemplate" class="demo01.AccountImpl" abstract="true" init-method="accInit" destroy-method="accDestroy">
+		<property name="balance" value="1000.00"/>	
+	</bean>
+
+	<bean id="a1" class="demo01.AccountImpl" parent="accTemplate">
+		<property name="id" value="101"/>
+		<property name="type" value="Saving"/>
+		<property name="balance" value="10000.00"/>
+		<property name="accHolder" ref="p1"/>
+	</bean>
+	
+	<bean id="a2" class="demo01.AccountImpl" parent="accTemplate">
+		<property name="id" value="102"/>
+		<property name="type" value="Saving"/>
+	</bean>	
+
+</beans>

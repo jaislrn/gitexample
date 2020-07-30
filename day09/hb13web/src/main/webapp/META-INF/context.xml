@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource name="jdbc/connpool"
+		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+		auth="Container"
+		type="javax.sql.DataSource"
+		username="nilesh"
+		password="nilesh"
+		driverClassName="com.mysql.cj.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/sh09"
+		maxTotal="5"
+		maxIdle="2"
+		maxWaitMillis="10000"
+		removeAbandonedTimeout="300"
+		defaultAutoCommit="false"
+		validationQuery="SELECT 1"  />
+</Context>
+
+<!-- 
+name: this attribute defines the global name for this resource that will be used to reference this resource configuration. Note that “jdbc” is required by convention, so that all Resource names resolve to “jdbc” subcontext, which is relative to the java:comp/env naming context.
+factory: this attribute defines the factory to be used to create this resource.
+auth: this attribute defines who should perform authentication. In our case “Container” will perform authentication on behalf of the web application. Another option is 
+type: this attribute defines type of the class that will be returned by this resource.
+username and password: are used by the “Container” during authentication to the resource, database in our case.
+driverClassName: is a fully qualified Java class name of the JDBC driver. The name we used here “com.mysql.jdbc.Driver” is the official driver name for the recommended Connector/J MySQL’s JDBC DataSource driver.
+url: is passed to the JDBC driver for connecting to the MySQL database.
+maxTotal: is the maximum number of connections that can be allocated from the connection pool at the same time. Make sure you configure MySQL’s “max_connections” to handle maximum total simultaneous connections. It is desired to have pool size to be small, but not smaller. An optimal pool size is a web application specific and can be found by load testing and monitoring.
+maxIdle: is the maximum number of connections that can be idle (not used by web application) at the same time.
+maxWaitMillis: is the maximum time in milliseconds that the pool manager will wait for the connection to be released by the web application before throwing an exception. This wait is activated when there is no available connections. In our case it is 10 seconds.
+removeAbandonedTimeout: is the number of seconds to be waited before the active connection considered abandoned, which should be set to the time you expect you longest query to run. In our example we have the default value, you can change it based on your server needs.
+defaultAutoCommit: attribute defines if auto-commit of the state of the connection should be performed. In our example we have the default value, which is true.
+-->

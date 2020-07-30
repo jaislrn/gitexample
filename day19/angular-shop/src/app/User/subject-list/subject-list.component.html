@@ -1,0 +1,19 @@
+<!-- <div class="col-xs-8">
+    <label class="radio-inline" *ngFor="let subject of subjects">
+        <input type="radio" [value]="subject.name" name="subject">{{subject.name}}<br>
+    </label>
+    <br>
+    <br>
+    <button (click)="onshowBook()" class="btn btn-success">Show Book</button>
+</div> -->
+
+<div class="table-responsive">
+    <table class="table">
+        <tr *ngFor="let subject of subjects">
+            <td><input type="radio" [value]="subject" name="subject" (change)="selectSubject($event)">       {{subject}}</td>
+        </tr>
+    </table>
+    
+    <a [routerLink]="['/home/showbooks',subject]"><button class="btn btn-success">Show Books</button></a>
+    
+</div>

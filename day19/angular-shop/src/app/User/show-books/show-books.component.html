@@ -1,0 +1,16 @@
+<!-- <form [formGroup]="form" (ngSubmit)="onCart()">
+    <label formArrayName="orders" *ngFor="let order of ordersFormArray.controls; let i = index">
+        <input type="checkbox" [formControlName]="i">
+        {{ordersData[i].name}}
+    </label>
+    <button class="btn btn-success">Add to cart</button>
+</form> -->
+
+<div class="table-responsive">
+    <table class="table">
+        <tr *ngFor="let book of bookList">
+            <td><input type="checkbox" [value]="book.id" name="book" (change)="selectBook($event, book)" >{{book.name}}</td>
+        </tr>
+    </table>
+    <button (click)="onCart()" class="btn btn-success">Add to cart</button>
+</div>

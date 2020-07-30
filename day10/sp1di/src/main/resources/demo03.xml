@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	<bean id="p1" class="demo03.PersonImpl">
+		<property name="age" value="37"/>
+		<property name="name" value="Nilesh"/>
+		<property name="email" value="nilesh@sunbeaminfo.com"/>
+	</bean>
+
+	<bean id="a1" class="demo03.AccountImpl">
+		<property name="id" value="101"/>
+		<property name="type" value="Saving"/>
+		<property name="balance" value="10000.00"/>
+		<property name="accHolder" ref="p1"/>
+		<property name="transactions">
+			<list value-type="java.util.LinkedList">
+				<bean class="demo03.TransactionImpl">
+					<property name="accId" value="101"/>
+					<property name="type" value="Deposit"/>
+					<property name="amount" value="13000.00"/>
+				</bean>
+				<bean class="demo03.TransactionImpl">
+					<property name="accId" value="101"/>
+					<property name="type" value="Withdraw"/>
+					<property name="amount" value="3000.00"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

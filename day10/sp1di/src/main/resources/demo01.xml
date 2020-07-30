@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="a1" class="demo01.AccountImpl">
+		<property name="id" value="101"/>
+		<property name="type" value="Saving"/>
+		<property name="balance" value="10000.00"/>
+	</bean>
+	
+	<bean id="a2" class="demo01.AccountImpl">
+		<constructor-arg index="0" value="102"/>
+		<constructor-arg index="1" value="Saving"/>
+		<constructor-arg index="2" value="20000.00"/>
+	</bean>
+	
+</beans>

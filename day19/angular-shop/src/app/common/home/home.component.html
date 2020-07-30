@@ -1,0 +1,37 @@
+<nav class="navbar sticky-top navbar-inverse" *ngIf="flag">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Hello ,{{email}}</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" [ngSwitch]="email">
+            <ul class="nav navbar-nav">
+
+                <li><a routerLink="/home/edit">Edit Profile</a></li>
+                <li><a routerLink="/home/changePassword" routerLinkActive="active">Change Password</a></li>
+                
+
+
+                <ul class="nav navbar-nav" *ngSwitchCase="'admin'">
+                    <li><a routerLink="/home/allBooks">Books List</a></li>
+                    <li><a routerLink="/home/allUsers">Users List</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav" *ngSwitchDefault>
+                    <li><a routerLink="/home/subjectWiseBook">Subject Wise book</a></li>
+                    <li><a routerLink="/home/cart">Cart</a></li>
+                    <li><a routerLink="/home/cartHistory">Cart History</a></li>  
+                </ul>
+
+                <li><a routerLink="/home/help">help</a></li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><button (click)="onLogout()" style="margin-top: 10px;" class="btn btn-link">Logout</button></li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

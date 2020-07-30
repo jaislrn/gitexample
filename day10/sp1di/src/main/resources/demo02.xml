@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	<bean id="p1" class="demo02.PersonImpl">
+		<property name="age" value="37"/>
+		<property name="name" value="Nilesh"/>
+		<property name="email" value="nilesh@sunbeaminfo.com"/>
+	</bean>
+
+	<bean id="p2" class="demo02.PersonImpl">
+		<property name="age" value="41"/>
+		<property name="name" value="Vishal"/>
+		<property name="email" value="vishal@sunbeaminfo.com"/>
+	</bean>
+
+	<bean id="a1" class="demo02.AccountImpl">
+		<property name="id" value="101"/>
+		<property name="type" value="Saving"/>
+		<property name="balance" value="10000.00"/>
+		<property name="accHolder" ref="p1"/>
+	</bean>
+	
+	<bean id="a2" class="demo02.AccountImpl">
+		<constructor-arg index="0" value="102"/>
+		<constructor-arg index="1" value="Saving"/>
+		<constructor-arg index="2" value="20000.00"/>
+		<constructor-arg index="3" ref="p2"/>
+	</bean>
+	
+	<bean id="a3" class="demo02.AccountImpl">
+		<property name="id" value="103"/>
+		<property name="type" value="Saving"/>
+		<property name="balance" value="5000.00"/>
+		<property name="accHolder">
+			<bean class="demo02.PersonImpl">
+				<property name="age" value="37"/>
+				<property name="name" value="Sameer"/>
+				<property name="email" value="sameer@sunbeaminfo.com"/>
+			</bean>
+		</property>
+	</bean>
+	
+	
+</beans>

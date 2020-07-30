@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="consLogger" class="demo04.ConsoleLoggerImpl">
+	</bean>
+	
+	<bean id="fileLogger" class="demo04.FileLoggerImpl">
+		<property name="logFilePath" value="app.log"/>
+	</bean>
+
+	<bean id="a1" class="demo04.AccountImpl">
+		<property name="id" value="101"/>
+		<property name="type" value="Saving"/>
+		<property name="balance" value="10000.00"/>
+		<property name="logger" ref="consLogger"/>
+	</bean>
+	
+</beans>

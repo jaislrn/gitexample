@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<context:annotation-config/>
+	<context:property-placeholder location="classpath:demo02.properties"/>
+
+	<bean id="p1" class="demo02.PersonImpl">
+		<property name="age" value="${p.age}"/>
+		<property name="name" value="${p.name}"/>
+		<property name="email" value="${p.email}"/>
+	</bean>	
+	
+	<bean id="a1" class="demo02.AccountImpl">
+		<property name="id" value="${acc.id}"/>
+		<property name="type" value="${acc.type}"/>
+		<property name="balance" value="${acc.balance}"/>
+		<property name="accHolder" ref="p1"/>
+	</bean>
+
+	<bean id="i1" class="demo02.AccInfoImpl">
+		<property name="accId" value="#{a1.id}"/>
+		<property name="name" value="#{p1.name}"/>
+		<property name="balance" value="#{a1.balance}"/>		
+	</bean>	
+</beans>
